@@ -1744,6 +1744,14 @@ config ARCH_BOARD_STM32F103_MINIMUM
 	---help---
 		A configuration for the STM32F103 Minimum board.
 
+config ARCH_BOARD_TRICODER
+	bool "Testing development board"
+	depends on ARCH_CHIP_STM32F103
+	select ARCH_HAVE_LEDS
+	select ARCH_HAVE_BUTTONS
+	---help---
+		A configuration for the testing board.
+
 config ARCH_BOARD_STM32F411_MINIMUM
 	bool "STM32F411CEU6 Minimum ARM Development Board"
 	depends on ARCH_CHIP_STM32F411CE
@@ -2514,6 +2522,7 @@ config ARCH_BOARD
 	default "stm32f051-discovery"      if ARCH_BOARD_STM32F051_DISCOVERY
 	default "stm32f072-discovery"      if ARCH_BOARD_STM32F072_DISCOVERY
 	default "stm32f103-minimum"        if ARCH_BOARD_STM32F103_MINIMUM
+	default "tricoder"                 if ARCH_BOARD_TRICODER
 	default "stm32f411-minimum"        if ARCH_BOARD_STM32F411_MINIMUM
 	default "stm3210e-eval"            if ARCH_BOARD_STM3210E_EVAL
 	default "stm3220g-eval"            if ARCH_BOARD_STM3220G_EVAL
@@ -3067,6 +3076,9 @@ source "boards/arm/stm32/stm32butterfly2/Kconfig"
 endif
 if ARCH_BOARD_STM32F103_MINIMUM
 source "boards/arm/stm32/stm32f103-minimum/Kconfig"
+endif
+if ARCH_BOARD_TRICODER
+source "boards/arm/stm32/tricoder/Kconfig"
 endif
 if ARCH_BOARD_STM32F411_MINIMUM
 source "boards/arm/stm32/stm32f411-minimum/Kconfig"
